@@ -50,38 +50,45 @@
 				</div>
 			</div>
 
-			<div class="grid content-end gap-3 sm:grid-cols-3 lg:grid-cols-1">
-				<div
-					class="rounded-[var(--ff-radius-xl)] border border-[var(--ff-glass-border)] bg-[var(--ff-glass-surface)] px-5 py-5 shadow-[var(--ff-glass-shadow)] backdrop-blur-md"
-				>
-					<p
-						class="text-5xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.045em]"
-					>
-						{activeLeads.length}
-					</p>
-					<p class="mt-2 text-sm text-[var(--ff-text-muted)]">Active signals</p>
-				</div>
+			<div
+				class="overflow-hidden rounded-[var(--ff-radius-md)] border border-[rgba(255,255,255,0.07)] bg-[rgba(12,19,33,0.45)]"
+			>
+				<div class="divide-y divide-[rgba(255,255,255,0.07)]">
+					<div class="flex items-end justify-between px-5 py-4">
+						<div>
+							<p class="text-sm text-[var(--ff-text-muted)]">Active signals</p>
+						</div>
 
-				<div
-					class="rounded-[var(--ff-radius-xl)] border border-[var(--ff-glass-border)] bg-[var(--ff-glass-surface)] px-5 py-5 shadow-[var(--ff-glass-shadow)] backdrop-blur-md"
-				>
-					<p
-						class="text-5xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.045em]"
-					>
-						${(totalRevenueAtRisk / 1000).toFixed(1)}k
-					</p>
-					<p class="mt-2 text-sm text-[var(--ff-text-muted)]">Revenue at risk</p>
-				</div>
+						<p
+							class="text-4xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.05em]"
+						>
+							{activeLeads.length}
+						</p>
+					</div>
 
-				<div
-					class="rounded-[var(--ff-radius-xl)] border border-[var(--ff-glass-border)] bg-[var(--ff-glass-surface)] px-5 py-5 shadow-[var(--ff-glass-shadow)] backdrop-blur-md"
-				>
-					<p
-						class="text-5xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.045em]"
-					>
-						{criticalLeads}
-					</p>
-					<p class="mt-2 text-sm text-[var(--ff-text-muted)]">Critical opportunity</p>
+					<div class="flex items-end justify-between px-5 py-4">
+						<div>
+							<p class="text-sm text-[var(--ff-text-muted)]">Revenue at risk</p>
+						</div>
+
+						<p
+							class="text-4xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.05em]"
+						>
+							${(totalRevenueAtRisk / 1000).toFixed(1)}k
+						</p>
+					</div>
+
+					<div class="flex items-end justify-between px-5 py-4">
+						<div>
+							<p class="text-sm text-[var(--ff-text-muted)]">Critical opportunity</p>
+						</div>
+
+						<p
+							class="text-4xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.05em]"
+						>
+							{criticalLeads}
+						</p>
+					</div>
 				</div>
 			</div>
 		</header>

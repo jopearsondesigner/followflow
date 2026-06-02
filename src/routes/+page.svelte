@@ -43,9 +43,7 @@
 		</div>
 
 		<div class="relative z-10 hidden lg:block">
-			<div
-				class="rounded-[var(--ff-radius-xl)] border border-[rgba(56,213,255,0.12)] bg-[rgba(17,24,39,0.7)] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-md"
-			>
+			<div class="ff-section-shell">
 				<p class="text-sm font-medium text-[var(--ff-cyan)]">Decision flow</p>
 
 				<div class="mt-6 space-y-4">

@@ -48,7 +48,9 @@
 			</div>
 
 			<div class="grid content-end gap-3 sm:grid-cols-3 lg:grid-cols-1">
-				<div class="border-l border-[rgba(56,213,255,0.18)] py-3 pl-5">
+				<div
+					class="rounded-[1.5rem] border border-[var(--ff-glass-border)] bg-[var(--ff-glass-surface)] px-5 py-5 shadow-[var(--ff-glass-shadow)] backdrop-blur-md"
+				>
 					<p
 						class="text-5xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.045em]"
 					>
@@ -57,7 +59,9 @@
 					<p class="mt-2 text-sm text-[var(--ff-text-muted)]">Active signals</p>
 				</div>
 
-				<div class="border-l border-[rgba(56,213,255,0.18)] py-3 pl-5">
+				<div
+					class="rounded-[1.5rem] border border-[var(--ff-glass-border)] bg-[var(--ff-glass-surface)] px-5 py-5 shadow-[var(--ff-glass-shadow)] backdrop-blur-md"
+				>
 					<p
 						class="text-5xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.045em]"
 					>
@@ -66,7 +70,9 @@
 					<p class="mt-2 text-sm text-[var(--ff-text-muted)]">Revenue at risk</p>
 				</div>
 
-				<div class="border-l border-[rgba(56,213,255,0.18)] py-3 pl-5">
+				<div
+					class="rounded-[1.5rem] border border-[var(--ff-glass-border)] bg-[var(--ff-glass-surface)] px-5 py-5 shadow-[var(--ff-glass-shadow)] backdrop-blur-md"
+				>
 					<p
 						class="text-5xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.045em]"
 					>
@@ -88,55 +94,70 @@
 					</h2>
 				</div>
 
-				<div
-					class="rounded-[2rem] border border-[rgba(56,213,255,0.22)] bg-[#1b2638] p-7 shadow-[0_0_80px_rgba(56,213,255,0.08)]"
-				>
-					<div class="flex flex-wrap items-center justify-between gap-4">
-						<p
-							class="rounded-full border border-[var(--ff-cyan)]/40 bg-[var(--ff-cyan)]/10 px-3 py-1 text-xs font-medium text-[var(--ff-cyan)]"
-						>
-							Recommended first action
-						</p>
+				<div class="relative">
+					<div
+						class="pointer-events-none absolute inset-0 -z-10 scale-110 blur-[70px]"
+						style="
+							background:
+								radial-gradient(
+									circle,
+									rgba(56, 213, 255, 0.08) 0%,
+									rgba(56, 213, 255, 0.04) 35%,
+									transparent 75%
+								);
+						"
+					></div>
 
-						<p class="text-sm text-[var(--ff-text-muted)]">
-							${selectedLead.estimatedValue.toLocaleString()} at risk
-						</p>
-					</div>
-
-					<div class="mt-7 flex items-stretch gap-5">
-						<div
-							class="w-1.5 shrink-0 rounded-full"
-							style={`background: ${getSignalColor(selectedLead.urgencyScore)}`}
-						></div>
-
-						<div class="min-w-0 flex-1">
-							<h3
-								class="text-5xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.05em] md:text-6xl"
+					<div
+						class="rounded-[2rem] border border-[rgba(56,213,255,0.22)] bg-[#1b2638] p-7 shadow-[0_0_80px_rgba(56,213,255,0.08)]"
+					>
+						<div class="flex flex-wrap items-center justify-between gap-4">
+							<p
+								class="rounded-full border border-[rgba(56,213,255,0.24)] bg-[rgba(56,213,255,0.06)] px-3 py-1 text-[0.72rem] font-semibold tracking-[0.08em] text-[var(--ff-cyan)] uppercase"
 							>
-								{selectedLead.name}
-							</h3>
-
-							<p class="mt-2 text-sm text-[var(--ff-text-muted)]">
-								{selectedLead.business} · {selectedLead.interest}
+								Recommended first action
 							</p>
 
-							<p class="mt-6 max-w-3xl text-lg leading-8 text-[var(--ff-text)]">
-								{selectedLead.recommendedNextStep}
+							<p class="text-sm text-[var(--ff-text-muted)]">
+								${selectedLead.estimatedValue.toLocaleString()} at risk
 							</p>
+						</div>
 
-							<div class="mt-7">
-								<div class="mb-2 flex items-center justify-between text-xs">
-									<span class="text-[var(--ff-text-muted)]">
-										{getActionLabel(selectedLead.urgencyScore)}
-									</span>
-									<span class="text-[var(--ff-cyan)]">Window is active</span>
-								</div>
+						<div class="mt-7 flex items-stretch gap-5">
+							<div
+								class="w-1.5 shrink-0 rounded-full"
+								style={`background: ${getSignalColor(selectedLead.urgencyScore)}`}
+							></div>
 
-								<div class="h-1.5 overflow-hidden rounded-full bg-[#0b111c]">
-									<div
-										class="h-full rounded-full"
-										style={`width: ${getMomentumWidth(selectedLead.urgencyScore)}; background: ${getSignalColor(selectedLead.urgencyScore)}`}
-									></div>
+							<div class="min-w-0 flex-1">
+								<h3
+									class="text-5xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.05em] md:text-6xl"
+								>
+									{selectedLead.name}
+								</h3>
+
+								<p class="mt-2 text-sm text-[var(--ff-text-muted)]">
+									{selectedLead.business} · {selectedLead.interest}
+								</p>
+
+								<p class="mt-6 max-w-3xl text-lg leading-8 text-[var(--ff-text)]">
+									{selectedLead.recommendedNextStep}
+								</p>
+
+								<div class="mt-7">
+									<div class="mb-2 flex items-center justify-between text-xs">
+										<span class="text-[var(--ff-text-muted)]">
+											{getActionLabel(selectedLead.urgencyScore)}
+										</span>
+										<span class="text-[var(--ff-cyan)]">Window is active</span>
+									</div>
+
+									<div class="h-1.5 overflow-hidden rounded-full bg-[#0b111c]">
+										<div
+											class="h-full rounded-full"
+											style={`width: ${getMomentumWidth(selectedLead.urgencyScore)}; background: ${getSignalColor(selectedLead.urgencyScore)}`}
+										></div>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -156,9 +177,9 @@
 									type="button"
 									aria-label={`Select ${lead.name}`}
 									onclick={() => (selectedLead = lead)}
-									class="w-full py-5 text-left transition hover:bg-[var(--ff-surface)]/45"
+									class="group w-full rounded-2xl px-4 py-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:bg-[rgba(24,33,49,0.45)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.22)]"
 								>
-									<div class="flex items-center justify-between gap-6">
+									<div class="flex items-center justify-between gap-6 rounded-2xl">
 										<div class="flex min-w-0 items-center gap-4">
 											<div
 												class="h-10 w-1 shrink-0 rounded-full"
@@ -188,7 +209,9 @@
 			</section>
 
 			<aside class="flex flex-col gap-5 lg:sticky lg:top-8 lg:self-start">
-				<section class="rounded-[2rem] bg-[var(--ff-surface)] p-6">
+				<section
+					class="rounded-[2rem] border border-[rgba(56,213,255,0.08)] bg-[var(--ff-surface)] p-6 shadow-[0_0_40px_rgba(56,213,255,0.04)]"
+				>
 					<p class="text-sm font-medium text-[var(--ff-cyan)]">Why this lead is first</p>
 
 					<h2 class="mt-4 text-2xl font-semibold tracking-tight">Evidence → Risk → Action</h2>
@@ -230,7 +253,9 @@
 					</div>
 				</section>
 
-				<section class="rounded-[2rem] bg-[rgba(24,33,49,0.72)] p-6 backdrop-blur-sm">
+				<section
+					class="rounded-[2rem] border border-[rgba(167,176,190,0.08)] bg-[rgba(17,24,39,0.58)] p-6 backdrop-blur-sm"
+				>
 					<p class="text-sm font-medium text-[var(--ff-cyan)]">Suggested reply</p>
 
 					<div class="mt-4 flex flex-wrap gap-2">
@@ -256,7 +281,7 @@
 					</div>
 
 					<button
-						class="mt-5 rounded-full bg-[var(--ff-cyan)] px-4 py-2 text-sm font-semibold text-[var(--ff-bg)]"
+						class="mt-5 rounded-full border border-[rgba(56,213,255,0.35)] bg-[rgba(56,213,255,0.08)] px-4 py-2 text-sm font-semibold text-[var(--ff-cyan)] transition hover:bg-[rgba(56,213,255,0.14)]"
 					>
 						Use suggested reply
 					</button>

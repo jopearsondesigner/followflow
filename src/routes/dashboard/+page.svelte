@@ -36,7 +36,7 @@
 		<header class="grid gap-10 pb-6 lg:grid-cols-[1.15fr_0.85fr]">
 			<div>
 				<a href={resolve('/')} class="inline-flex items-center transition-opacity hover:opacity-80">
-					<img src={logoLight} alt="FollowFlow" class="h-8 w-auto" />
+					<img src={logoLight} alt="FollowFlow" class="h-6 w-auto" />
 				</a>
 
 				<div class="mt-12">
@@ -52,7 +52,7 @@
 
 			<div class="grid content-end gap-3 sm:grid-cols-3 lg:grid-cols-1">
 				<div
-					class="rounded-[1.5rem] border border-[var(--ff-glass-border)] bg-[var(--ff-glass-surface)] px-5 py-5 shadow-[var(--ff-glass-shadow)] backdrop-blur-md"
+					class="rounded-[var(--ff-radius-xl)] border border-[var(--ff-glass-border)] bg-[var(--ff-glass-surface)] px-5 py-5 shadow-[var(--ff-glass-shadow)] backdrop-blur-md"
 				>
 					<p
 						class="text-5xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.045em]"
@@ -63,7 +63,7 @@
 				</div>
 
 				<div
-					class="rounded-[1.5rem] border border-[var(--ff-glass-border)] bg-[var(--ff-glass-surface)] px-5 py-5 shadow-[var(--ff-glass-shadow)] backdrop-blur-md"
+					class="rounded-[var(--ff-radius-xl)] border border-[var(--ff-glass-border)] bg-[var(--ff-glass-surface)] px-5 py-5 shadow-[var(--ff-glass-shadow)] backdrop-blur-md"
 				>
 					<p
 						class="text-5xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.045em]"
@@ -74,7 +74,7 @@
 				</div>
 
 				<div
-					class="rounded-[1.5rem] border border-[var(--ff-glass-border)] bg-[var(--ff-glass-surface)] px-5 py-5 shadow-[var(--ff-glass-shadow)] backdrop-blur-md"
+					class="rounded-[var(--ff-radius-xl)] border border-[var(--ff-glass-border)] bg-[var(--ff-glass-surface)] px-5 py-5 shadow-[var(--ff-glass-shadow)] backdrop-blur-md"
 				>
 					<p
 						class="text-5xl leading-none font-[var(--ff-font-display)] font-semibold tracking-[-0.045em]"
@@ -112,11 +112,11 @@
 					></div>
 
 					<div
-						class="rounded-[2rem] border border-[rgba(56,213,255,0.22)] bg-[#1b2638] p-7 shadow-[0_0_80px_rgba(56,213,255,0.08)]"
+						class="rounded-[var(--ff-radius-xl)] border border-[rgba(56,213,255,0.22)] bg-[#1b2638] p-7 shadow-[0_0_80px_rgba(56,213,255,0.08)]"
 					>
 						<div class="flex flex-wrap items-center justify-between gap-4">
 							<p
-								class="rounded-full border border-[rgba(56,213,255,0.24)] bg-[rgba(56,213,255,0.06)] px-3 py-1 text-[0.72rem] font-semibold tracking-[0.08em] text-[var(--ff-cyan)] uppercase"
+								class="rounded-[var(--ff-radius-sm)] border border-[rgba(56,213,255,0.24)] bg-[rgba(56,213,255,0.06)] px-3 py-1 text-[0.72rem] font-semibold tracking-[0.08em] text-[var(--ff-cyan)] uppercase"
 							>
 								Recommended first action
 							</p>
@@ -180,9 +180,11 @@
 									type="button"
 									aria-label={`Select ${lead.name}`}
 									onclick={() => (selectedLead = lead)}
-									class="group w-full rounded-2xl px-4 py-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:bg-[rgba(24,33,49,0.45)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.22)]"
+									class="group w-full rounded-[var(--ff-radius-lg)] px-4 py-5 text-left transition-all duration-200 hover:-translate-y-0.5 hover:bg-[rgba(24,33,49,0.45)] hover:shadow-[0_12px_28px_rgba(0,0,0,0.22)]"
 								>
-									<div class="flex items-center justify-between gap-6 rounded-2xl">
+									<div
+										class="flex items-center justify-between gap-6 rounded-[var(--ff-radius-lg)]"
+									>
 										<div class="flex min-w-0 items-center gap-4">
 											<div
 												class="h-10 w-1 shrink-0 rounded-full"
@@ -213,7 +215,7 @@
 
 			<aside class="flex flex-col gap-5 lg:sticky lg:top-8 lg:self-start">
 				<section
-					class="rounded-[2rem] border border-[rgba(56,213,255,0.08)] bg-[var(--ff-surface)] p-6 shadow-[0_0_40px_rgba(56,213,255,0.04)]"
+					class="rounded-[var(--ff-radius-xl)] border border-[rgba(56,213,255,0.08)] bg-[var(--ff-surface)] p-6 shadow-[0_0_40px_rgba(56,213,255,0.04)]"
 				>
 					<p class="text-sm font-medium text-[var(--ff-cyan)]">Why this lead is first</p>
 
@@ -257,7 +259,7 @@
 				</section>
 
 				<section
-					class="rounded-[2rem] border border-[rgba(167,176,190,0.08)] bg-[rgba(17,24,39,0.58)] p-6 backdrop-blur-sm"
+					class="rounded-[var(--ff-radius-xl)] border border-[rgba(167,176,190,0.08)] bg-[rgba(17,24,39,0.58)] p-6 backdrop-blur-sm"
 				>
 					<p class="text-sm font-medium text-[var(--ff-cyan)]">Suggested reply</p>
 
@@ -266,28 +268,20 @@
 							<button
 								type="button"
 								onclick={() => (selectedTone = tone)}
-								class={`rounded-full border px-3 py-1.5 text-xs font-medium transition ${
-									selectedTone === tone
-										? 'border-[var(--ff-cyan)] bg-[var(--ff-cyan)] text-[var(--ff-bg)]'
-										: 'border-[var(--ff-border)] text-[var(--ff-text-muted)] hover:border-[var(--ff-cyan)] hover:text-[var(--ff-text)]'
-								}`}
+								class={`ff-tone-button ${selectedTone === tone ? 'ff-tone-button-active' : ''}`}
 							>
 								{tone}
 							</button>
 						{/each}
 					</div>
 
-					<div class="mt-5 rounded-3xl bg-[#101827] p-5">
+					<div class="mt-5 rounded-[var(--ff-radius-lg)] bg-[#101827] p-5">
 						<p class="leading-7 text-[var(--ff-text)]">
 							{selectedLead.suggestedReplies[selectedTone][0]}
 						</p>
 					</div>
 
-					<button
-						class="mt-5 rounded-full border border-[rgba(56,213,255,0.35)] bg-[rgba(56,213,255,0.08)] px-4 py-2 text-sm font-semibold text-[var(--ff-cyan)] transition hover:bg-[rgba(56,213,255,0.14)]"
-					>
-						Use suggested reply
-					</button>
+					<button class="ff-button-secondary mt-5 px-4 py-2 text-sm"> Use suggested reply </button>
 				</section>
 			</aside>
 		</section>

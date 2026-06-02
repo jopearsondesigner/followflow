@@ -14,7 +14,7 @@
 
 		<div class="relative z-10">
 			<a href={resolve('/')} class="inline-flex items-center transition-opacity hover:opacity-80">
-				<img src={logoLight} alt="FollowFlow" class="h-8 w-auto" />
+				<img src={logoLight} alt="FollowFlow" class="h-6 w-auto" />
 			</a>
 
 			<p class="mt-16 text-sm font-semibold tracking-[0.12em] text-[var(--ff-cyan)] uppercase">
@@ -31,16 +31,11 @@
 			</p>
 
 			<div class="mt-9 flex flex-wrap gap-3">
-				<a
-					href="/dashboard"
-					class="rounded-full bg-[var(--ff-cyan)] px-5 py-3 text-sm font-semibold text-[#041018] shadow-[0_0_28px_rgba(56,213,255,0.2)] transition hover:-translate-y-0.5 hover:shadow-[0_0_36px_rgba(56,213,255,0.3)]"
-				>
-					View dashboard
-				</a>
+				<a href="/dashboard" class="ff-button-primary px-5 py-3 text-sm"> View dashboard </a>
 
 				<a
 					href="https://github.com/jopearsondesigner/followflow"
-					class="rounded-full border border-[rgba(56,213,255,0.28)] bg-[rgba(56,213,255,0.06)] px-5 py-3 text-sm font-semibold text-[var(--ff-cyan)] transition hover:bg-[rgba(56,213,255,0.12)]"
+					class="ff-button-secondary px-5 py-3 text-sm"
 				>
 					View GitHub
 				</a>
@@ -49,12 +44,12 @@
 
 		<div class="relative z-10 hidden lg:block">
 			<div
-				class="rounded-[2rem] border border-[rgba(56,213,255,0.12)] bg-[rgba(17,24,39,0.7)] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-md"
+				class="rounded-[var(--ff-radius-xl)] border border-[rgba(56,213,255,0.12)] bg-[rgba(17,24,39,0.7)] p-6 shadow-[0_20px_80px_rgba(0,0,0,0.35)] backdrop-blur-md"
 			>
 				<p class="text-sm font-medium text-[var(--ff-cyan)]">Decision flow</p>
 
 				<div class="mt-6 space-y-4">
-					<div class="rounded-3xl bg-[rgba(24,33,49,0.9)] p-5">
+					<div class="rounded-[var(--ff-radius-lg)] bg-[rgba(24,33,49,0.9)] p-5">
 						<p class="text-sm text-[var(--ff-text-muted)]">Start with</p>
 						<p class="mt-2 text-4xl font-semibold tracking-tight">Sarah Mitchell</p>
 						<p class="mt-4 text-[var(--ff-text-muted)]">
@@ -63,23 +58,25 @@
 					</div>
 
 					<div class="grid grid-cols-3 gap-3">
-						<div class="rounded-2xl bg-[var(--ff-glass-surface)] p-4">
+						<div class="rounded-[var(--ff-radius-md)] bg-[var(--ff-glass-surface)] p-4">
 							<p class="text-3xl font-semibold">$2.4k</p>
 							<p class="mt-1 text-xs text-[var(--ff-text-muted)]">At risk</p>
 						</div>
 
-						<div class="rounded-2xl bg-[var(--ff-glass-surface)] p-4">
+						<div class="rounded-[var(--ff-radius-md)] bg-[var(--ff-glass-surface)] p-4">
 							<p class="text-3xl font-semibold">96</p>
 							<p class="mt-1 text-xs text-[var(--ff-text-muted)]">Urgency</p>
 						</div>
 
-						<div class="rounded-2xl bg-[var(--ff-glass-surface)] p-4">
+						<div class="rounded-[var(--ff-radius-md)] bg-[var(--ff-glass-surface)] p-4">
 							<p class="text-3xl font-semibold">1</p>
 							<p class="mt-1 text-xs text-[var(--ff-text-muted)]">Next action</p>
 						</div>
 					</div>
 
-					<div class="rounded-3xl border border-[rgba(56,213,255,0.1)] bg-[rgba(8,11,16,0.55)] p-5">
+					<div
+						class="rounded-[var(--ff-radius-lg)] border border-[rgba(56,213,255,0.1)] bg-[rgba(8,11,16,0.55)] p-5"
+					>
 						<p class="text-sm font-medium text-[var(--ff-cyan)]">Suggested reply</p>
 						<p class="mt-3 leading-7 text-[var(--ff-text-muted)]">
 							Hi Sarah — I have availability this week if you’d like to talk through the next steps.

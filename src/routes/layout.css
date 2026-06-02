@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+:root {
+	/* FollowFlow Brand */
+
+	--ff-bg: #080b10;
+	--ff-surface: #111827;
+	--ff-surface-elevated: #182131;
+
+	--ff-border: #243041;
+
+	--ff-text: #f4f7fa;
+	--ff-text-muted: #a7b0be;
+
+	--ff-cyan: #38d5ff;
+	--ff-mint: #5ef2b8;
+	--ff-amber: #ffb86b;
+	--ff-coral: #ff6b7a;
+}
+
+html,
+body {
+	background: var(--ff-bg);
+	color: var(--ff-text);
+	min-height: 100%;
+	font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+}

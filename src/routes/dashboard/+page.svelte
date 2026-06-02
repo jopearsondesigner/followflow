@@ -43,92 +43,124 @@
 						Move the lead before momentum drops.
 					</h1>
 
-					<div class="mt-7 flex flex-wrap gap-3 text-sm">
-						<div class="rounded-full bg-[var(--ff-surface)] px-4 py-2 text-[var(--ff-text-muted)]">
-							{activeLeads.length} active signals
+					<div class="mt-8 grid max-w-xl grid-cols-3 gap-3">
+						<div class="rounded-2xl bg-[var(--ff-surface)] px-4 py-4">
+							<p class="text-2xl font-semibold tracking-tight">{activeLeads.length}</p>
+							<p class="mt-1 text-xs text-[var(--ff-text-muted)]">Active signals</p>
 						</div>
 
-						<div class="rounded-full bg-[var(--ff-surface)] px-4 py-2 text-[var(--ff-text-muted)]">
-							${totalRevenueAtRisk.toLocaleString()} at risk
+						<div class="rounded-2xl bg-[var(--ff-surface)] px-4 py-4">
+							<p class="text-2xl font-semibold tracking-tight">
+								${(totalRevenueAtRisk / 1000).toFixed(1)}k
+							</p>
+							<p class="mt-1 text-xs text-[var(--ff-text-muted)]">At risk</p>
 						</div>
 
-						<div class="rounded-full bg-[var(--ff-surface)] px-4 py-2 text-[var(--ff-text-muted)]">
-							{criticalLeads} critical opportunity
+						<div class="rounded-2xl bg-[var(--ff-surface)] px-4 py-4">
+							<p class="text-2xl font-semibold tracking-tight">{criticalLeads}</p>
+							<p class="mt-1 text-xs text-[var(--ff-text-muted)]">Critical</p>
 						</div>
 					</div>
 				</div>
 			</header>
 
 			<section class="rounded-[2rem] border border-[var(--ff-border)] bg-[var(--ff-surface)] p-6">
-				<div class="mb-5 flex items-center justify-between">
-					<h2 class="text-2xl font-semibold">Who needs attention now</h2>
-
+				<div class="mb-6 flex items-center justify-between">
+					<h2 class="text-2xl font-semibold">Today’s priority</h2>
 					<p class="text-sm text-[var(--ff-text-muted)]">{activeLeads.length} active signals</p>
 				</div>
 
-				<div class="flex flex-col gap-3">
+				<div class="flex flex-col">
 					{#each activeLeads as lead (lead.id)}
 						<button
 							type="button"
 							aria-label={`Select ${lead.name}`}
 							onclick={() => (selectedLead = lead)}
-							class={`group w-full rounded-[1.35rem] border p-5 text-left transition ${
-								selectedLead.id === lead.id
-									? 'border-[var(--ff-cyan)] bg-[#1b2638] shadow-[0_0_0_1px_rgba(56,213,255,0.35),0_0_48px_rgba(56,213,255,0.12)]'
-									: 'border-[var(--ff-border)] bg-[var(--ff-surface-elevated)] hover:border-[var(--ff-cyan)]/60'
+							class={`group w-full text-left transition ${
+								selectedLead.id === lead.id ? 'rounded-[1.35rem] bg-[#1b2638]' : ''
 							}`}
 						>
-							<div class="flex items-stretch gap-4">
+							{#if lead.id === activeLeads[0].id}
 								<div
-									class="w-1 shrink-0 rounded-full"
-									style={`background: ${getSignalColor(lead.urgencyScore)}`}
-								></div>
-
-								<div class="flex flex-1 items-start justify-between gap-5">
-									<div class="min-w-0 flex-1">
-										<div class="flex items-center gap-3">
-											<span
-												class="h-2.5 w-2.5 rounded-full"
-												style={`background: ${getSignalColor(lead.urgencyScore)}`}
-											></span>
-
-											<h3 class="truncate text-lg font-semibold">{lead.name}</h3>
-										</div>
-
-										<p class="mt-1 text-sm text-[var(--ff-text-muted)]">
-											{lead.business} · {lead.interest}
+									class="rounded-[1.35rem] border border-[var(--ff-cyan)] p-6 shadow-[0_0_0_1px_rgba(56,213,255,0.35),0_0_48px_rgba(56,213,255,0.12)]"
+								>
+									<div class="mb-5 flex items-center justify-between gap-4">
+										<p
+											class="rounded-full border border-[var(--ff-cyan)]/40 bg-[var(--ff-cyan)]/10 px-3 py-1 text-xs font-medium text-[var(--ff-cyan)]"
+										>
+											Recommended first action
 										</p>
 
-										<div class="mt-4">
-											<div class="mb-2 flex items-center justify-between text-xs">
-												<span class="text-[var(--ff-text-muted)]">
-													{getActionLabel(lead.urgencyScore)}
-												</span>
-
-												<span class="text-[var(--ff-cyan)]">Momentum active</span>
-											</div>
-
-											<div class="h-1.5 overflow-hidden rounded-full bg-[#0b111c]">
-												<div
-													class="h-full rounded-full"
-													style={`width: ${getMomentumWidth(lead.urgencyScore)}; background: ${getSignalColor(lead.urgencyScore)}`}
-												></div>
-											</div>
-										</div>
-
-										<p class="mt-4 text-sm leading-6 text-[var(--ff-text)]">
-											{lead.recommendedNextStep}
+										<p class="text-sm text-[var(--ff-text-muted)]">
+											${lead.estimatedValue.toLocaleString()} at risk
 										</p>
 									</div>
 
-									<div class="shrink-0 text-right">
-										<p class="text-xs text-[var(--ff-text-muted)]">At risk</p>
-										<p class="mt-1 text-lg font-semibold">
-											${lead.estimatedValue.toLocaleString()}
-										</p>
+									<div class="flex items-stretch gap-5">
+										<div
+											class="w-1.5 shrink-0 rounded-full"
+											style={`background: ${getSignalColor(lead.urgencyScore)}`}
+										></div>
+
+										<div class="min-w-0 flex-1">
+											<h3 class="text-3xl font-semibold tracking-tight">{lead.name}</h3>
+
+											<p class="mt-2 text-sm text-[var(--ff-text-muted)]">
+												{lead.business} · {lead.interest}
+											</p>
+
+											<p class="mt-5 max-w-2xl text-base leading-7 text-[var(--ff-text)]">
+												{lead.recommendedNextStep}
+											</p>
+
+											<div class="mt-6">
+												<div class="mb-2 flex items-center justify-between text-xs">
+													<span class="text-[var(--ff-text-muted)]">
+														{getActionLabel(lead.urgencyScore)}
+													</span>
+													<span class="text-[var(--ff-cyan)]">Window is active</span>
+												</div>
+
+												<div class="h-1.5 overflow-hidden rounded-full bg-[#0b111c]">
+													<div
+														class="h-full rounded-full"
+														style={`width: ${getMomentumWidth(lead.urgencyScore)}; background: ${getSignalColor(lead.urgencyScore)}`}
+													></div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
+							{:else}
+								<div
+									class={`border-b border-[var(--ff-border)] px-2 py-5 transition hover:bg-[var(--ff-surface-elevated)]/45 ${
+										selectedLead.id === lead.id ? 'rounded-2xl px-5' : ''
+									}`}
+								>
+									<div class="flex items-center justify-between gap-6">
+										<div class="flex min-w-0 items-center gap-4">
+											<div
+												class="h-10 w-1 shrink-0 rounded-full"
+												style={`background: ${getSignalColor(lead.urgencyScore)}`}
+											></div>
+
+											<div class="min-w-0">
+												<h3 class="truncate text-lg font-semibold">{lead.name}</h3>
+												<p class="mt-1 truncate text-sm text-[var(--ff-text-muted)]">
+													{lead.recommendedNextStep}
+												</p>
+											</div>
+										</div>
+
+										<div class="shrink-0 text-right">
+											<p class="text-xs text-[var(--ff-text-muted)]">
+												{getActionLabel(lead.urgencyScore)}
+											</p>
+											<p class="mt-1 font-semibold">${lead.estimatedValue.toLocaleString()}</p>
+										</div>
+									</div>
+								</div>
+							{/if}
 						</button>
 					{/each}
 				</div>
@@ -139,61 +171,45 @@
 			<section
 				class="rounded-[2rem] bg-[var(--ff-surface)] p-6 shadow-[0_24px_80px_rgba(0,0,0,0.24)]"
 			>
-				<p class="text-sm font-medium text-[var(--ff-cyan)]">Momentum timeline</p>
+				<p class="text-sm font-medium text-[var(--ff-cyan)]">Why this lead is first</p>
 
 				<h2 class="mt-4 text-3xl font-semibold tracking-tight">{selectedLead.name}</h2>
 
 				<p class="mt-2 text-[var(--ff-text-muted)]">
-					Follow-up window is active. Silence is starting to cost momentum.
+					FollowFlow ranked this opportunity first because the signal is recent, the value is clear,
+					and the next move is obvious.
 				</p>
 
 				<div class="mt-6 rounded-3xl bg-[var(--ff-surface-elevated)] p-5">
-					<div class="flex items-center justify-between text-xs text-[var(--ff-text-muted)]">
-						<span>Engagement signal</span>
-						<span>{getActionLabel(selectedLead.urgencyScore)}</span>
-					</div>
+					<div class="space-y-5">
+						<div>
+							<p class="text-sm font-semibold text-[var(--ff-text)]">Evidence</p>
 
-					<div class="relative mt-5 h-2 rounded-full bg-[#0b111c]">
-						<div
-							class="h-full rounded-full"
-							style={`width: ${selectedLead.urgencyScore}%; background: ${getSignalColor(selectedLead.urgencyScore)}`}
-						></div>
-
-						<div
-							class="absolute top-1/2 h-4 w-4 -translate-y-1/2 rounded-full border-2 border-[var(--ff-bg)] shadow-[0_0_22px_rgba(56,213,255,0.55)]"
-							style={`left: calc(${selectedLead.urgencyScore}% - 8px); background: ${getSignalColor(selectedLead.urgencyScore)}`}
-						></div>
-					</div>
-
-					<div class="mt-6 space-y-4">
-						<div class="flex gap-3">
-							<div class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--ff-mint)]"></div>
-							<div>
-								<p class="text-sm font-medium">Signal detected</p>
-								<p class="mt-1 text-sm leading-6 text-[var(--ff-text-muted)]">
-									{selectedLead.lastInteraction}
-								</p>
+							<div class="mt-3 space-y-3 text-sm leading-6 text-[var(--ff-text-muted)]">
+								<p>• {selectedLead.lastInteraction}</p>
+								<p>• No reply has been sent yet</p>
+								<p>• ${selectedLead.estimatedValue.toLocaleString()} opportunity is still active</p>
 							</div>
 						</div>
 
-						<div class="flex gap-3">
-							<div class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--ff-amber)]"></div>
-							<div>
-								<p class="text-sm font-medium">Momentum risk</p>
-								<p class="mt-1 text-sm leading-6 text-[var(--ff-text-muted)]">
-									{selectedLead.aiInsight}
-								</p>
-							</div>
+						<div class="h-px bg-[var(--ff-border)]"></div>
+
+						<div>
+							<p class="text-sm font-semibold text-[var(--ff-text)]">Risk</p>
+
+							<p class="mt-3 text-sm leading-6 text-[var(--ff-text-muted)]">
+								{selectedLead.aiInsight}
+							</p>
 						</div>
 
-						<div class="flex gap-3">
-							<div class="mt-1 h-2.5 w-2.5 shrink-0 rounded-full bg-[var(--ff-cyan)]"></div>
-							<div>
-								<p class="text-sm font-medium">Recommended move</p>
-								<p class="mt-1 text-sm leading-6 text-[var(--ff-text-muted)]">
-									{selectedLead.recommendedNextStep}
-								</p>
-							</div>
+						<div class="h-px bg-[var(--ff-border)]"></div>
+
+						<div>
+							<p class="text-sm font-semibold text-[var(--ff-text)]">Recommended action</p>
+
+							<p class="mt-3 text-sm leading-6 text-[var(--ff-text-muted)]">
+								{selectedLead.recommendedNextStep}
+							</p>
 						</div>
 					</div>
 				</div>

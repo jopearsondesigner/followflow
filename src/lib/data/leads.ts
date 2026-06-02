@@ -1,3 +1,4 @@
+/* src/lib/data/leads.ts */
 import type { Lead } from '$lib/types/lead';
 
 export const leads: Lead[] = [

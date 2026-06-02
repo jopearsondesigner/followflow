@@ -1,3 +1,4 @@
+/* src/lib/types/lead.ts */
 export type LeadTemperature = 'Hot' | 'Warm' | 'Cooling' | 'Dormant';
 
 export type ReplyTone = 'Friendly' | 'Concise' | 'Urgency-Aware';

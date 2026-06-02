@@ -1,6 +1,7 @@
 <!--src/routes/dashboard/+page.svelte-->
 <script lang="ts">
 	import logoLight from '$lib/assets/logos/followflow-logo-light.svg';
+	import { resolve } from '$app/paths';
 	import { leads } from '$lib/data/leads';
 	import type { ReplyTone } from '$lib/types/lead';
 
@@ -34,7 +35,9 @@
 	<section class="mx-auto max-w-7xl">
 		<header class="grid gap-10 pb-6 lg:grid-cols-[1.15fr_0.85fr]">
 			<div>
-				<img src={logoLight} alt="FollowFlow" class="h-7 w-auto" />
+				<a href={resolve('/')} class="inline-flex items-center transition-opacity hover:opacity-80">
+					<img src={logoLight} alt="FollowFlow" class="h-8 w-auto" />
+				</a>
 
 				<div class="mt-12">
 					<p class="text-sm font-medium text-[var(--ff-cyan)]">Today’s Flow</p>

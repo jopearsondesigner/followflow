@@ -1,6 +1,7 @@
 <!--src/routes/+page.svelte-->
 <script lang="ts">
 	import logoLight from '$lib/assets/logos/followflow-logo-light.svg';
+	import { resolve } from '$app/paths';
 </script>
 
 <main class="min-h-screen overflow-hidden bg-[var(--ff-bg)] text-[var(--ff-text)]">
@@ -12,7 +13,9 @@
 		></div>
 
 		<div class="relative z-10">
-			<img src={logoLight} alt="FollowFlow" class="h-8 w-auto" />
+			<a href={resolve('/')} class="inline-flex items-center transition-opacity hover:opacity-80">
+				<img src={logoLight} alt="FollowFlow" class="h-8 w-auto" />
+			</a>
 
 			<p class="mt-16 text-sm font-semibold tracking-[0.12em] text-[var(--ff-cyan)] uppercase">
 				AI follow-up command center

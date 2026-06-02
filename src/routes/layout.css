@@ -77,8 +77,14 @@ span {
 	position: relative;
 	border: 1px solid var(--ff-section-border);
 	border-radius: var(--ff-radius-lg);
-	padding: 1.5rem;
+	padding: 1.25rem;
 	background: transparent;
+}
+
+@media (min-width: 640px) {
+	.ff-section-shell {
+		padding: 1.5rem;
+	}
 }
 
 .ff-section-shell::before {

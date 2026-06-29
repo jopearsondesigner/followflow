@@ -41,7 +41,7 @@
 		name: '',
 		business: '',
 		interest: '',
-		estimatedValue: '1200',
+		estimatedValue: '',
 		nextAction: '',
 		status: 'New',
 		priority: 'Warm'
@@ -152,7 +152,7 @@
 			name: '',
 			business: '',
 			interest: '',
-			estimatedValue: '1200',
+			estimatedValue: '',
 			nextAction: '',
 			status: 'New',
 			priority: 'Warm'
@@ -222,6 +222,7 @@
 		dashboardLeads = nextLeads;
 		selectedLeadId = newLead.id;
 		resetForm();
+		submittedForm.reset();
 		persistLeads(nextLeads);
 	};
 
@@ -370,13 +371,18 @@
 			</div>
 		</header>
 
-		<section class="mt-8 grid gap-6 lg:grid-cols-[0.95fr_1.05fr] xl:gap-7">
-			<section class="ff-dashboard-panel">
+		<section class="mt-8 grid items-start gap-6 lg:grid-cols-[0.9fr_1.1fr] xl:gap-7">
+			<section class="flex flex-col gap-6">
+				<section class="ff-dashboard-panel">
 				<div class="flex items-start justify-between gap-4">
 					<div>
 						<p class="text-sm text-[var(--ff-text-muted)]">Add lead</p>
 
 						<h2 class="mt-1 text-2xl font-semibold tracking-tight">New follow-up signal</h2>
+
+						<p class="mt-2 text-sm leading-6 text-[var(--ff-text-muted)]">
+							Lead name is required. Everything else can stay blank while testing.
+						</p>
 					</div>
 
 					{#if saveNotice}
@@ -386,18 +392,25 @@
 					{/if}
 				</div>
 
-				<form class="mt-5 grid gap-3" onsubmit={(event) => {
+				<form autocomplete="off" class="mt-5 grid gap-3" onsubmit={(event) => {
 					event.preventDefault();
 					addLead(event);
 				}}>
 					<div class="grid gap-3 sm:grid-cols-2">
 						<label class="grid gap-2 text-sm text-[var(--ff-text-muted)]">
-							Lead name
+							<span class="flex items-center justify-between gap-3">
+
+								<span>Lead name</span>
+
+								<span class="rounded-full border border-[rgba(56,213,255,0.18)] bg-[rgba(56,213,255,0.06)] px-2 py-0.5 text-[0.68rem] font-semibold tracking-[0.04em] text-[var(--ff-cyan)] uppercase">Required</span>
+
+							</span>
 							<input
 								bind:value={form.name}
 								name="name"
+								required
 								class="rounded-[var(--ff-radius-sm)] border border-[rgba(255,255,255,0.08)] bg-[rgba(8,11,16,0.54)] px-3 py-2.5 text-[var(--ff-text)] outline-none transition focus:border-[rgba(56,213,255,0.42)]"
-								placeholder="Jordan Lee"
+								
 							/>
 						</label>
 
@@ -407,7 +420,7 @@
 								bind:value={form.business}
 								name="business"
 								class="rounded-[var(--ff-radius-sm)] border border-[rgba(255,255,255,0.08)] bg-[rgba(8,11,16,0.54)] px-3 py-2.5 text-[var(--ff-text)] outline-none transition focus:border-[rgba(56,213,255,0.42)]"
-								placeholder="Northline Studio"
+								
 							/>
 						</label>
 					</div>
@@ -419,7 +432,7 @@
 								bind:value={form.interest}
 								name="interest"
 								class="rounded-[var(--ff-radius-sm)] border border-[rgba(255,255,255,0.08)] bg-[rgba(8,11,16,0.54)] px-3 py-2.5 text-[var(--ff-text)] outline-none transition focus:border-[rgba(56,213,255,0.42)]"
-								placeholder="Website refresh"
+								
 							/>
 						</label>
 
@@ -430,7 +443,7 @@
 								name="estimatedValue"
 								inputmode="numeric"
 								class="rounded-[var(--ff-radius-sm)] border border-[rgba(255,255,255,0.08)] bg-[rgba(8,11,16,0.54)] px-3 py-2.5 text-[var(--ff-text)] outline-none transition focus:border-[rgba(56,213,255,0.42)]"
-								placeholder="1200"
+								
 							/>
 						</label>
 					</div>
@@ -442,7 +455,7 @@
 							name="nextAction"
 							rows="3"
 							class="resize-none rounded-[var(--ff-radius-sm)] border border-[rgba(255,255,255,0.08)] bg-[rgba(8,11,16,0.54)] px-3 py-2.5 text-[var(--ff-text)] outline-none transition focus:border-[rgba(56,213,255,0.42)]"
-							placeholder="Send a simple pricing follow-up with one call option."
+							
 						></textarea>
 					</label>
 
@@ -488,6 +501,61 @@
 						</button>
 					</div>
 				</form>
+				</section>
+
+				<section class="ff-dashboard-panel">
+					<p class="text-sm font-medium text-[var(--ff-cyan)]">Founder beta scope</p>
+
+					<h2 class="mt-3 text-2xl font-semibold tracking-tight">What this v0.1 proves</h2>
+
+					<p class="mt-3 text-sm leading-6 text-[var(--ff-text-muted)]">
+						This is a local-first beta workflow for testing whether founder-led teams can quickly turn
+						scattered follow-up into one clear next action.
+					</p>
+
+					<div class="mt-5 grid gap-3">
+						<div class="ff-mini-signal">
+							<p class="text-xs font-semibold tracking-[0.1em] text-[var(--ff-cyan)] uppercase">
+								Capture
+							</p>
+
+							<p class="mt-2 text-sm leading-6 text-[var(--ff-text-muted)]">
+								Add a lead with business context, value, status, and risk signal.
+							</p>
+						</div>
+
+						<div class="ff-mini-signal">
+							<p class="text-xs font-semibold tracking-[0.1em] text-[var(--ff-amber)] uppercase">
+								Prioritize
+							</p>
+
+							<p class="mt-2 text-sm leading-6 text-[var(--ff-text-muted)]">
+								Surface the most important follow-up before the opportunity cools.
+							</p>
+						</div>
+
+						<div class="ff-mini-signal">
+							<p class="text-xs font-semibold tracking-[0.1em] text-[var(--ff-mint)] uppercase">
+								Persist
+							</p>
+
+							<p class="mt-2 text-sm leading-6 text-[var(--ff-text-muted)]">
+								Save the queue locally so the workflow survives refresh.
+							</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="ff-dashboard-panel">
+					<p class="text-sm font-medium text-[var(--ff-cyan)]">Not yet in v0.1</p>
+
+					<h2 class="mt-3 text-2xl font-semibold tracking-tight">Intentionally lightweight</h2>
+
+					<p class="mt-3 text-sm leading-6 text-[var(--ff-text-muted)]">
+						No auth, no team accounts, no CRM integration, no real AI scoring yet. This pass is focused
+						on proving the core follow-up loop first.
+					</p>
+				</section>
 			</section>
 
 			<section class="flex flex-col gap-6">

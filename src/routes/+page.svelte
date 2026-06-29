@@ -52,7 +52,7 @@
 
 		<div class="relative z-10">
 			<div class="ff-section-shell">
-				<p class="text-sm font-medium text-[var(--ff-cyan)]">Decision flow</p>
+				<p class="text-sm font-medium text-[var(--ff-cyan)]">Founder Beta v0.1</p>
 
 				<div class="mt-5 space-y-3 sm:mt-6 sm:space-y-4">
 					<div class="rounded-[var(--ff-radius-lg)] bg-[rgba(24,33,49,0.9)] p-4 sm:p-5">
@@ -92,4 +92,80 @@
 			</div>
 		</div>
 	</section>
+
+	<section class="relative z-10 mx-auto max-w-7xl px-5 pb-16 sm:px-6 sm:pb-20">
+		<div class="ff-dashboard-panel">
+			<div class="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-10">
+				<div>
+					<p class="text-sm font-semibold tracking-[0.14em] text-[var(--ff-cyan)] uppercase">
+						Founder Beta
+					</p>
+
+					<h2
+						class="mt-4 max-w-3xl text-[2.45rem] leading-[0.96] font-semibold tracking-[-0.055em] sm:text-5xl"
+					>
+						A lightweight follow-up command center for founder-led teams.
+					</h2>
+
+					<p class="mt-5 max-w-2xl text-base leading-7 text-[var(--ff-text-muted)] sm:text-lg sm:leading-8">
+						FollowFlow helps founders, consultants, agencies, and service providers turn scattered
+						lead signals into one clear next action before momentum drops.
+					</p>
+
+					<div class="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+						<a href="/dashboard" class="ff-button-primary w-full px-5 py-3 text-sm sm:w-auto">
+							Try dashboard preview
+						</a>
+
+						<a
+							href="mailto:jopearsondesigner@gmail.com?subject=FollowFlow%20Founder%20Beta"
+							class="ff-button-secondary w-full px-5 py-3 text-sm sm:w-auto"
+						>
+							Request beta access
+						</a>
+					</div>
+				</div>
+
+				<div class="grid gap-4">
+					<div class="ff-mini-signal">
+						<p class="text-xs font-semibold tracking-[0.1em] text-[var(--ff-cyan)] uppercase">
+							What works now
+						</p>
+
+						<ul class="mt-3 space-y-2 text-sm leading-6 text-[var(--ff-text-muted)]">
+							<li>Add active leads and opportunities.</li>
+							<li>Set follow-up status and risk signal.</li>
+							<li>Track the next action.</li>
+							<li>Copy suggested reply drafts.</li>
+							<li>Save the queue locally in your browser.</li>
+						</ul>
+					</div>
+
+					<div class="ff-mini-signal">
+						<p class="text-xs font-semibold tracking-[0.1em] text-[var(--ff-amber)] uppercase">
+							Coming next
+						</p>
+
+						<ul class="mt-3 space-y-2 text-sm leading-6 text-[var(--ff-text-muted)]">
+							<li>Paste messy lead notes and generate a follow-up brief.</li>
+							<li>AI-assisted priority, risk, next action, and reply drafts.</li>
+							<li>A daily morning queue for the top follow-up moves.</li>
+						</ul>
+					</div>
+
+					<div class="ff-mini-signal">
+						<p class="text-xs font-semibold tracking-[0.1em] text-[var(--ff-mint)] uppercase">
+							Beta limits
+						</p>
+
+						<p class="mt-3 text-sm leading-6 text-[var(--ff-text-muted)]">
+							This early preview saves locally in your browser. Login, team accounts, CRM/email
+							integrations, and automated AI signal tracking are not live yet.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
 </main>
